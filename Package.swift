@@ -11,12 +11,21 @@ let package = Package(
     products: [
         .library(
             name: "SPMGoogleSignIn",
-            targets: ["GoogleSignIn"]),
+            targets: ["GoogleSignIn", "GoogleSignInDependencies", "GoogleSignInResources"]),
     ],
     targets: [
+        .target(
+            name: "GoogleSignInResources",
+            path: "Sources",
+            resources: [ .process("GoogleSignIn.bundle") ]
+        ),
         .binaryTarget(
             name: "GoogleSignIn",
             path: "GoogleSignIn.xcframework"
+        ),
+        .binaryTarget(
+            name: "GoogleSignInDependencies",
+            path: "GoogleSignInDependencies.xcframework"
         )
     ]
 )
